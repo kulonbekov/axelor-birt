@@ -7,15 +7,29 @@
     <grid name="contact-grid"
           title="Contacts"
           model="com.axelor.apps.base.db.Contact">
+        <menubar>
+            <menu name="contact" title="Reports1" icon="fa-files-o" showTitle="true">
+                <item name="printItem" title="Print"
+                      action="action-report-contact"/>
+            </menu>
+        </menubar>
         <field name="fullName" />
         <field name="email" />
         <field name="phone" />
         <!--<field name="dateOfBirth" />-->
+
     </grid>
+
 
     <form name="contact-form"
           title="Contact"
           model="com.axelor.apps.base.db.Contact">
+        <menubar>
+            <menu title="Reports2" icon="fa-files-o" showTitle="true">
+                <item title="Print"
+                      action="action-report-contact"/>
+            </menu>
+        </menubar>
         <panel name="overviewPanel" title="Overview">
             <field name="fullName" readonly="false">
                 <editor>
@@ -36,6 +50,7 @@
         ]]></viewer>
             </field>
         </panel>
+
         <panel name="aboutMePanel" title="About me">
             <field name="notes" showTitle="false" colSpan="12"/>
         </panel>
@@ -55,6 +70,7 @@
       <field name="updatedOn"/>
       <field name="updatedBy"/>
     </panel>
+
   </form>
 
   <form name="address-form-popup"
@@ -69,5 +85,10 @@
       <field name="country" />
     </panel>
   </form>
+    <action-report name="action-report-contact"
+                   design="Contact.rptdesign"
+                   output="Contact-${date}${time}"
+                   format="pdf">
+    </action-report>
 
 </object-views>
