@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
+
+    <grid name="event-grid"
+          title="Event"
+          model="com.axelor.apps.base.db.EventList">
+
+        <field name="name" />
+        <field name="description" />
+        <field name="spendingDate" />
+        <field name="spendingTime" />
+        <!--<field name="theme" />
+        <field name="author" />-->
+    </grid>
+
+    <form name="event-form"
+          title="Event"
+          model="com.axelor.apps.base.db.EventList">
+        <panel name="overviewPanel" title="Overview">
+            <!--<field name="" readonly="false">
+                <editor>
+                    <field name="name" colSpan="4"/>
+                    <field name="spendingDate" colSpan="4"/>
+                    <field name="spendingTime" colSpan="4"/>
+                </editor>
+            </field>-->
+            <field name="name" colSpan="4"/>
+            <field name="spendingDate" colSpan="4"/>
+            <field name="spendingTime" colSpan="4"/>
+        </panel>
+        <panel name="description" title="Description">
+            <field name="description" showTitle="false" colSpan="12"/>
+        </panel>
+        <panel-related name="authorsPanel"
+                       field="author"
+                       form-view="author-form-popup">
+            <field name="firstName"/>
+            <field name="lastName"/>
+            <field name="login"/>
+        </panel-related>
+        <panel-related name="themesPanel"
+                       field="theme"
+                       form-view="theme-form-popup">
+            <field name="name"/>
+
+        </panel-related>
+
+        <panel name="sidePanel" sidebar="true">
+            <field name="createdOn"/>
+            <field name="createdBy"/>
+            <field name="updatedOn"/>
+            <field name="updatedBy"/>
+        </panel>
+    </form>
+
+    <form name="author-form-popup"
+          title="Author"
+          model="com.axelor.apps.base.db.Author">
+        <panel title="Overview">
+            <field name="firstName" />
+            <field name="lastName" />
+            <field name="login" />
+        </panel>
+    </form>
+    <form name="theme-form-popup"
+          title="Theme"
+          model="com.axelor.apps.base.db.Theme">
+        <panel title="Overview">
+            <field name="name" />
+
+        </panel>
+    </form>
+
+</object-views>

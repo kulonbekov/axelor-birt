@@ -1098,4 +1098,19 @@
   </action-view>
 
 
+
+  <menuitem name="menu-event-book"
+            title="Event list" />
+  <menuitem name="menu-event-friends"
+            parent="menu-event-book"
+            title="Events"
+            action = "event.all"/>
+
+  <action-view name="event.all" title="Events"
+               model="com.axelor.apps.base.db.EventList">
+      <view type="grid" name="event-grid"/>
+      <view type="form" name="event-form"/>
+  </action-view>
+
+
 </object-views>
