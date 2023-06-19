@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:importId="http://java.sun.com/JSP/Page"
               xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   https://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
 
@@ -23,10 +23,18 @@
     <form name="event-form"
           title="Event"
           model="com.axelor.apps.base.db.EventList">
+        <menubar>
+            <menu name="event" title="Reports" icon="fa-files-o" showTitle="true">
+                <item name="printItem" title="Print"
+                      action="action-report-event-id"/>
+            </menu>
+        </menubar>
+
         <panel name="overviewPanel" title="Overview">
-            <field name="name" colSpan="4"/>
-            <field name="spendingDate" colSpan="4"/>
-            <field name="spendingTime" colSpan="4"/>
+            <field name="importId" colSpan="3"/>
+            <field name="name" colSpan="3"/>
+            <field name="spendingDate" colSpan="3"/>
+            <field name="spendingTime" colSpan="3"/>
         </panel>
         <panel name="description" title="Description">
             <field name="description" showTitle="false" colSpan="12"/>
@@ -69,6 +77,7 @@
             <field name="name" />
 
         </panel>
+
     </form>
 
     <action-report name="action-report-event"
@@ -76,5 +85,16 @@
                    output="Event-${date}${time}"
                    format="pdf">
     </action-report>
+    <action-report name="action-report-event-id"
+                   design="event_id.rptdesign"
+                   output="Event-id-${date}${time}"
+                   format="pdf">
+
+        <param name="importId" expr="12" />
+        <!--<param name="importId" expr="" />-->
+
+    </action-report>
+
+
 
 </object-views>
