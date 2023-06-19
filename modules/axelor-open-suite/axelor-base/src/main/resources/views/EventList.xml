@@ -7,26 +7,23 @@
     <grid name="event-grid"
           title="Event"
           model="com.axelor.apps.base.db.EventList">
-
+        <menubar>
+            <menu name="event" title="Reports" icon="fa-files-o" showTitle="true">
+                <item name="printItem" title="Print"
+                      action="action-report-event"/>
+            </menu>
+        </menubar>
         <field name="name" />
         <field name="description" />
         <field name="spendingDate" />
         <field name="spendingTime" />
-        <!--<field name="theme" />
-        <field name="author" />-->
+
     </grid>
 
     <form name="event-form"
           title="Event"
           model="com.axelor.apps.base.db.EventList">
         <panel name="overviewPanel" title="Overview">
-            <!--<field name="" readonly="false">
-                <editor>
-                    <field name="name" colSpan="4"/>
-                    <field name="spendingDate" colSpan="4"/>
-                    <field name="spendingTime" colSpan="4"/>
-                </editor>
-            </field>-->
             <field name="name" colSpan="4"/>
             <field name="spendingDate" colSpan="4"/>
             <field name="spendingTime" colSpan="4"/>
@@ -73,5 +70,11 @@
 
         </panel>
     </form>
+
+    <action-report name="action-report-event"
+                   design="event_list.rptdesign"
+                   output="Event-${date}${time}"
+                   format="pdf">
+    </action-report>
 
 </object-views>
