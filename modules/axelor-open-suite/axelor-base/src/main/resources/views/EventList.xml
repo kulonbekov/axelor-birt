@@ -10,7 +10,8 @@
         <menubar>
             <menu name="event" title="Reports" icon="fa-files-o" showTitle="true">
                 <item name="printItem" title="Print"
-                      action="action-report-event"/>
+                      action="action-report-event"
+                      />
             </menu>
         </menubar>
         <field name="name" />
@@ -87,11 +88,12 @@
     </action-report>
     <action-report name="action-report-event-id"
                    design="event_id.rptdesign"
-                   output="Event-id-${date}${time}"
+                   output="Event-${date}${time}"
+
                    format="pdf">
 
-        <param name="importId" expr="12" />
-        <!--<param name="importId" expr="" />-->
+        <param name="importId" expr="${com.axelor.apps.base.db.EventList.id}" />
+
 
     </action-report>
 
